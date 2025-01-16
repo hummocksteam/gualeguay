@@ -60,7 +60,7 @@ RUN rm -f /etc/nginx/nginx.conf
 #COPY --from=buildAPI /API/out .
 # COPY ./Front_React/build /usr/share/nginx/html
 #COPY --from=buildFront /App/build /usr/share/nginx/html
-COPY ./Frontend /usr/share/nginx/html
+COPY ./Deploy/Frontend /usr/share/nginx/html
 COPY ./Deploy/nginx.conf /etc/nginx
 #COPY ./Deploy/appsettings.json .
 #ENV ASPNETCORE_URLS https://+:5000
