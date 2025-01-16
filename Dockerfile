@@ -40,7 +40,7 @@ RUN chmod 777 /etc/ssl
 COPY ./Deploy/openssl.cnf /etc/ssl/
 WORKDIR /app
 RUN apt update && \
-    apt-get install -y nginx && \
+    apt-get install -y nginx gettext && \
     apt-get clean
 
 RUN apt update && apt install --no-install-recommends -y curl gnupg && \
