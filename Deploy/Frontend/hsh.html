@@ -21,8 +21,8 @@
     </style>
 </head>
 <body>
-    <div id="qr-container"><p id="message">Home Sweet Home!</p></div>
-    
+    <div id="qr-container"></div>
+    <p id="message">Home Sweet Home!</p>    
     
     <script>
         const url = window.location.href;
@@ -40,6 +40,7 @@
         }
         
         function cycleQR() {
+            /*
             if (toggle) {
                 generateQR(url);
                 message.style.visibility = "hidden";
@@ -48,6 +49,8 @@
                 message.style.visibility = "visible";
             }
             toggle = !toggle;
+            */
+            generateQR(url);
         }
         
         generateQR(url);
