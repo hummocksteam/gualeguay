@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Ciclando</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #qr-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="qr-container"></div>
+    <p id="message">Home Sweet Home!</p>
+    
+    <script>
+        const url = window.location.href;
+        const qrContainer = document.getElementById("qr-container");
+        const message = document.getElementById("message");
+        let toggle = true;
+        
+        function generateQR(content) {
+            qrContainer.innerHTML = "";
+            new QRCode(qrContainer, {
+                text: content,
+                width: 150,
+                height: 150
+            });
+        }
+        
+        function cycleQR() {
+            if (toggle) {
+                generateQR(url);
+                message.style.visibility = "hidden";
+            } else {
+                generateQR("Home Sweet Home!");
+                message.style.visibility = "visible";
+            }
+            toggle = !toggle;
+        }
+        
+        generateQR(url);
+        setInterval(cycleQR, 3000);
+    </script>
+</body>
+</html>
