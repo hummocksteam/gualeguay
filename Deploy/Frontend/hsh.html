@@ -57,11 +57,10 @@
         function cycleQR() {
             loader.style.display = "block";
             qrContainer.style.display = "none";
-            //message.style.visibility = "hidden";
+            message.style.visibility = "none";
             
             setTimeout(() => {
                 loader.style.display = "none";
-                qrContainer.style.display = "block";
                 
                 //if (toggle) {
                     generateQR(url);
@@ -70,6 +69,11 @@
                 //    message.style.visibility = "visible";
                 //}
                 //toggle = !toggle;
+
+                qrContainer.style.display = "block";
+                message.style.visibility = "visible";
+                
+            
             }, 1000); // Tiempo de carga antes de cambiar el QR
         }
         
