@@ -18,16 +18,31 @@
         #qr-container {
             margin-bottom: 20px;
         }
+        .loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #000;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <div id="qr-container"></div>
+    <div class="loader" id="loader"></div>
     <p id="message">Home Sweet Home!</p>    
     
     <script>
         const url = window.location.href;
         const qrContainer = document.getElementById("qr-container");
         const message = document.getElementById("message");
+        const loader = document.getElementById("loader");
         let toggle = true;
         
         function generateQR(content) {
@@ -40,21 +55,26 @@
         }
         
         function cycleQR() {
-            /*
-            if (toggle) {
-                generateQR(url);
-                message.style.visibility = "hidden";
-            } else {
-                generateQR("Home Sweet Home!");
-                message.style.visibility = "visible";
-            }
-            toggle = !toggle;
-            */
-            generateQR(url);
+            loader.style.display = "block";
+            qrContainer.style.display = "none";
+            message.style.visibility = "hidden";
+            
+            setTimeout(() => {
+                loader.style.display = "none";
+                qrContainer.style.display = "block";
+                
+                //if (toggle) {
+                    generateQR(url);
+                //} else {
+                //    generateQR("Home Sweet Home!");
+                //    message.style.visibility = "visible";
+                //}
+                //toggle = !toggle;
+            }, 1000); // Tiempo de carga antes de cambiar el QR
         }
         
         generateQR(url);
-        setInterval(cycleQR, 3000);
+        setInterval(cycleQR, 4000); // Incluye el tiempo de carga y visualización del QR
     </script>
 </body>
 </html>
