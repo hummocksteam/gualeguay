@@ -29,7 +29,7 @@ WORKDIR /App
 #COPY ./Frontend/*.* ./
 #COPY ./Front_React/.npmrc ./
 #RUN npm install
-COPY ./Frontend ./
+#COPY ./Frontend ./
 #COPY ./Deploy/.env ./
 #RUN npm run build
 
